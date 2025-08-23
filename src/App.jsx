@@ -14,10 +14,13 @@ function App() {
           <div className="modal">
             <h2>Disclaimer</h2>
             <p>
-              This chatbot is <strong>not</strong> a replacement for a licensed
+              <strong>UofTears Bot</strong> is <strong>NOT</strong> a replacement for a licensed
               mental health professional.  
               If you are in crisis or need urgent help, please reach out to a qualified
-              professional or call your local emergency number.
+              professional or contact emergency services.
+              For Canada and the US, call <strong>988</strong>.
+              For the UK, call <strong>999</strong> or <strong>111</strong> for NHS.
+              For other countries, refer to your local emergency number.
             </p>
             <button className="agree-btn" onClick={() => setAgreed(true)}>
               I Understand & Agree
