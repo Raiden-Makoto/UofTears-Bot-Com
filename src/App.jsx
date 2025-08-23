@@ -46,8 +46,8 @@ function App() {
         // Clean homepage
         <div className="homepage">
           <img src={appLogo} alt="App Logo" className="app-logo" />
-          <h1 className="app-title">MindMate Chatbot</h1>
-          <p className="tagline">Your AI companion for mental wellness</p>
+          <h1 className="app-title">UofTears Bot</h1>
+          <p className="tagline">Your AI companion for Mental Wellness</p>
         </div>
       )}
     </div>
