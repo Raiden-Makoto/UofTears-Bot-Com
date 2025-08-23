@@ -33,14 +33,15 @@
 }
 
 .chat-bubble {
-  max-width: 70%;
-  padding: 1rem 1.2rem;
+  max-width: 44%;
+  padding: 0.8rem 1rem;
   margin-bottom: 1rem;
-  border-radius: 18px;
+  border-radius: 25px;
   line-height: 1.5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   position: relative;
   animation: fadeInUp 0.3s ease-out;
+  word-wrap: break-word;
 }
 
 @keyframes fadeInUp {
@@ -55,19 +56,17 @@
 }
 
 .chat-bubble.user {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #75c2aa;
   color: white;
   margin-left: auto;
-  border-bottom-right-radius: 8px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
 }
 
 .chat-bubble.bot {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: #ecf0f1;
+  background: #b08fc2;
+  color: #ffffff;
   margin-right: auto;
-  border-bottom-left-radius: 8px;
-  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chat-input {
