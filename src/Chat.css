@@ -1,0 +1,175 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  font-family: 'GenshinImpact', Arial, sans-serif;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background: #0f0f23;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #16213e;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #0f3460;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 18px;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble.user {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.chat-bubble.bot {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #ecf0f1;
+  margin-right: auto;
+  border-bottom-left-radius: 8px;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+}
+
+.chat-input {
+  display: flex;
+  padding: 1.2rem;
+  border-top: 1px solid #1a1a2e;
+  background: #0f0f23;
+  backdrop-filter: blur(10px);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 2px solid #1a1a2e;
+  border-radius: 25px;
+  margin-right: 0.8rem;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #1a1a2e;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.chat-input input::placeholder {
+  color: #6b7280;
+  font-family: 'GenshinImpact', Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.chat-input button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.chat-input button:active {
+  transform: translateY(0);
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  background: #1a1a2e;
+  border-radius: 18px;
+  max-width: 70%;
+  margin-right: auto;
+  border-bottom-left-radius: 8px;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #667eea;
+  margin: 0 2px;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Message timestamp */
+.message-timestamp {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  text-align: right;
+  opacity: 0.7;
+}
+
+.chat-bubble.bot .message-timestamp {
+  text-align: left;
+}
+  
