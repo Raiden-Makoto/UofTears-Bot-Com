@@ -1,53 +1,54 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Actual App CSS */
 .app {
   font-family: Arial, sans-serif;
   text-align: center;
+  width: 100%;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-/* Full-screen modal overlay */
+/* Homepage */
+.homepage {
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0077ff, #00c6ff);
+  color: white;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.homepage > * {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.app-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Modal styles (same as before) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -58,9 +59,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
-/* Modal box */
 .modal {
   background: #fff;
   color: #333;
@@ -69,14 +70,6 @@
   max-width: 500px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.modal h2 {
-  margin-bottom: 1rem;
-}
-
-.modal p {
-  margin-bottom: 1.5rem;
 }
 
 .agree-btn {

@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import appLogo from "./assets/react.svg"; // replace with your own logo
 
 function App() {
   const [agreed, setAgreed] = useState(false);
-  const [checking, setChecking] = useState(true); // <- new state
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
     const hasAgreed = localStorage.getItem("chatbot_disclaimer_agreed");
     if (hasAgreed === "true") {
       setAgreed(true);
     }
-    setChecking(false); // done checking
+    setChecking(false);
   }, []);
 
   const handleAgree = () => {
@@ -20,10 +19,7 @@ function App() {
     setAgreed(true);
   };
 
-  if (checking) {
-    // Prevent flash by not rendering anything yet
-    return null;
-  }
+  if (checking) return null;
 
   return (
     <div className="app">
@@ -47,34 +43,12 @@ function App() {
           </div>
         </div>
       ) : (
-        // Your original logo + counter stuff
-        <>
-          <div>
-            <a href="https://vite.dev" target="_blank">
-              <img src={viteLogo} className="logo" alt="Vite logo" />
-            </a>
-            <a href="https://react.dev" target="_blank">
-              <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
-          </div>
-          <h1>Vite + React</h1>
-          <div className="card">
-            <button
-              onClick={() => {
-                localStorage.removeItem("chatbot_disclaimer_agreed");
-                setAgreed(false);
-              }}
-            >
-              Clear Agreement (for testing)
-            </button>
-            <p>
-              Edit <code>src/App.jsx</code> and save to test HMR
-            </p>
-          </div>
-          <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-          </p>
-        </>
+        // Clean homepage
+        <div className="homepage">
+          <img src={appLogo} alt="App Logo" className="app-logo" />
+          <h1 className="app-title">MindMate Chatbot</h1>
+          <p className="tagline">Your AI companion for mental wellness</p>
+        </div>
       )}
     </div>
   );
