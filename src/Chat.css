@@ -7,6 +7,29 @@
   font-family: 'GenshinImpact', Arial, sans-serif;
 }
 
+/* Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1c1c1c; /* dark gray to match logo bg */
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 2px solid #333;
+}
+
+.chat-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.chat-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
 .chat-messages {
   flex: 1;
   padding: 1.5rem;
@@ -86,6 +109,7 @@
   background: #1a1a2e;
   color: #ffffff;
   font-size: 1rem;
+  font-family: 'GenshinImpact', Arial, sans-serif;
   transition: all 0.3s ease;
 }
 

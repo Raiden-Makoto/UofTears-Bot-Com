@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Chat.css";
+import logo from "./assets/UofTears.png"; // your uploaded logo
 
 function Chat() {
   const [messages, setMessages] = useState([
@@ -24,6 +25,13 @@ function Chat() {
 
   return (
     <div className="chat-container">
+      {/* Header */}
+      <div className="chat-header">
+        <img src={logo} alt="App Logo" className="chat-logo" />
+        <h1 className="chat-title">UofTears Bot: Your AI Companion for Mental Wellness </h1>
+      </div>
+
+      {/* Messages */}
       <div className="chat-messages">
         {messages.map((msg, i) => (
           <div
@@ -34,6 +42,8 @@ function Chat() {
           </div>
         ))}
       </div>
+
+      {/* Input */}
       <div className="chat-input">
         <input
           value={input}
