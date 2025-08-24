@@ -19,34 +19,64 @@ function Chat() {
 
   const sendMessage = async () => {
     if (!input.trim() || !userId) return;
-
+  
     const userMsg = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setLoading(true);
-
+  
     try {
-      const res = await axios.post("https://42cummer-uoftearsbotapi.hf.space/chat", {
-        user_id: userId,
-        user_text: userMsg.text,
+      const res = await fetch("https://42cummer-uoftearsbotapi.hf.space/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: userId,
+          user_text: userMsg.text,
+        }),
       });
-
-      const botReply = { sender: "bot", text: res.data.response };
-      setMessages((prev) => [...prev, botReply]);
-    } catch (err) {
-        if (err.response) {
-          console.error("Server error:", err.response.data);
-        } else {
-          console.error("Network error:", err.message);
+  
+      if (!res.body) throw new Error("ReadableStream not supported");
+  
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+  
+      let botText = "";
+      // add placeholder bot message immediately
+      setMessages((prev) => [...prev, { sender: "bot", text: "" }]);
+      const botIndex = messages.length + 1;
+  
+      let firstChunk = true;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+  
+        const chunk = decoder.decode(value, { stream: true });
+        if (!chunk) continue;
+  
+        botText += chunk;
+  
+        setMessages((prev) => {
+          const newMsgs = [...prev];
+          newMsgs[botIndex] = { sender: "bot", text: botText };
+          return newMsgs;
+        });
+  
+        if (firstChunk) {
+          setLoading(false); // remove "Bot is typing..." once first chunk arrives
+          firstChunk = false;
         }
-        setMessages((prev) => [
-          ...prev,
-          { sender: "bot", text: "⚠️ Error: " + (err.response?.data?.detail || "check console logs") },
-        ]);
+      }
+    } catch (err) {
+      console.error("Stream error:", err);
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "⚠️ Error streaming response" },
+      ]);
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="chat-container">
