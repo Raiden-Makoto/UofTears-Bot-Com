@@ -106,11 +106,16 @@ function Chat() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          placeholder="Type your message..."
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !loading) {
+              sendMessage();
+            }
+          }}
+          placeholder={loading ? "Please wait..." : "Type your message..."}
+          disabled={loading}   // lock typing while bot is generating
         />
-        <button onClick={sendMessage} disabled={loading}>
-          Send
+        <button onClick={sendMessage} disabled={loading || !input.trim()}>
+          {loading ? "Generating..." : "Send"}
         </button>
       </div>
     </div>
